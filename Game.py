@@ -14,6 +14,8 @@ from modulos.ost import OST
 from modulos.seleção import seleção
 from modulos.dia import dia
 from modulos.funcionarios import criar_funcionario
+from modulos.eventos import eventos
+from modulos.administração import administrar
 
 init()
 pygame.mixer.init()
@@ -171,5 +173,9 @@ for dia_ in range(1, 10):
     pygame.mixer.music.load(OST["Neutro"])
     pygame.mixer.music.play(loops=-1)
     anomalias.append(nova_anomalia)
-    dia(dia_, anomalias, funcionários)
-    time.sleep(3)
+    Pesquisa = dia(dia_, anomalias, funcionários)
+    pygame.mixer.music.load(OST["administração"])
+    pygame.mixer.music.play(loops=-1)
+    time.sleep(2)
+    eventos(dia_)
+    administrar(Pesquisa, funcionários, anomalias, dia_)

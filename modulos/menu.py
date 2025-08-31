@@ -1,4 +1,4 @@
-def menu(opcoes, colunas, numerar=True):
+def menu(opcoes, colunas, numerar=True, detalhes_mod=False):
     import shutil
     import textwrap
     from modulos.cores import cores
@@ -9,9 +9,13 @@ def menu(opcoes, colunas, numerar=True):
 
 
     for i, opcao in enumerate(opcoes, start=1):
+        coluna_atual = (i - 1) % colunas
         prefixo = ""
         if numerar:
             prefixo = f"[{i}]"
+        elif detalhes_mod and coluna_atual == 0:
+            prefixo = f"[{i}]"
+
         texto = prefixo + opcao
         linha = textwrap.wrap(texto, width=largura_colunas-1) or [texto]
         opcoes_quebradas.append(linha)

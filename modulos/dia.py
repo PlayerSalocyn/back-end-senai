@@ -23,8 +23,7 @@ def dia(num, anomalias, funcionarios):
             f"Nível de perigo: {Problemas}"
         ]
         if pontos_de_pesquisa >= Meta:
-            em_andamento = False
-            break
+            opções.append("Terminar o dia")
         msg(f"Dia {num}", "AZ")
         print("\n\n\n")
         menu(status, 2, False)
@@ -37,6 +36,9 @@ def dia(num, anomalias, funcionarios):
             if escolha in corredores:
                 msg("Não há nada lá", "P")
                 time.sleep(3)
+            elif escolha == "Terminar o dia":
+                return Meta
+                break
             else:
                 anomalia = next(a for a in anomalias if a["Nome"] == escolha)
                 funcionario, resultado, novos_pontos = tarefa(funcionarios, anomalia)
