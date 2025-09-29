@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+    <ul>
+        {% for i in produtos %}
+        <li>
+            {% if imagem %}
+                <br><img src="/static/uploads{{imagem}}" alt="{{nome}}" width="80">
+            {% else %}
+                <img src="link sem imagem" width="80">
+            {% else %}
+            <a href="/{{id}}">{{nome}}</a> - {{preco}}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
